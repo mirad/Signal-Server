@@ -1111,6 +1111,7 @@ int main(int argc, char *argv[])
 		fprintf(stdout, "     -rel Reliability for ITM model 50 to 99 (optional)\n");
 		fprintf(stdout, "     -resample Resample Lidar input to specified resolution in meters (optional)\n");
 		fprintf(stdout, "Output:\n");
+                fprintf(stdout, "     -ano name of alphanumeric output file\n");
 		fprintf(stdout,	"     -dbm Plot Rxd signal power instead of field strength\n");
 		fprintf(stdout, "     -rt Rx Threshold (dB / dBm / dBuV/m)\n");
 		fprintf(stdout, "     -o Filename. Required. \n");
@@ -1280,6 +1281,14 @@ int main(int argc, char *argv[])
 			metric = 1;
 
 		}
+		
+		if (strcmp(argv[x], "-ano") ==0 ) {
+			z=x+1;
+
+			if (z<=y && argv[z][0] && argv[z][0]!='-')
+				strncpy(ano_filename,argv[z],253);
+		}
+
 
 		if (strcmp(argv[x], "-t") == 0) {
 			ngs = 0;	// greyscale background
